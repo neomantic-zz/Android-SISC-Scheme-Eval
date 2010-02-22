@@ -10,6 +10,9 @@ import sisc.interpreter.SchemeException;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.content.pm.ApplicationInfo;
+import android.content.res.AssetManager;
+
 
 public class EvalActivity extends Activity {
     /** Called when the activity is first created. */
@@ -24,8 +27,21 @@ public class EvalActivity extends Activity {
     			public Object execute(Interpreter interpreter ) throws SchemeException {
     				
     				try {
-
-    					Value v = interpreter.eval("(+ 3 1)");
+    					ApplicationInfo info = getApplicationInfo();
+						
+    					AssetManager manager = getAssets();
+    					
+    					//gets all the files under assets/scm
+    			    	String[] fileNames = manager.list("scm");
+    	    	
+    			    	//creates jar urls for each file to be loaded
+    			    	String[] sourceFiles = new String[ fileNames.length ];
+    			    	for( int i = 0; i < fileNames.length; i++ ) {
+    			    		sourceFiles[i] = "jar:file:" + info.sourceDir + "!/assets/scm/" + fileNames[i];
+    			    	} 
+    			    	interpreter.loadSourceFiles( sourceFiles );
+    					
+    					Value v = interpreter.eval("(add3 1)");
     			    	//show the result 
     			    	tv.setText(v.toString());
     					setContentView(tv);
