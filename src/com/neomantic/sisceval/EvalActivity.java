@@ -41,7 +41,7 @@ public class EvalActivity extends Activity {
     			    	} 
     			    	interpreter.loadSourceFiles( sourceFiles );
     					
-    					Value v = interpreter.eval("(add3 1)");
+    					Value v = interpreter.eval("(length)");
     			    	//show the result 
     			    	tv.setText(v.toString());
     					setContentView(tv);

@@ -66,8 +66,7 @@ public class Types extends IndexedFixableProcedure {
 
         public void deserialize(Deserializer s) throws IOException {
             try {
-                classObject = Class.forName(s.readUTF(), true,
-                                            currentClassLoader());
+                classObject = Class.forName(s.readUTF());
             } catch(ClassNotFoundException e) {
                 throw new IOException(e.toString());
             }

@@ -1,0 +1,6 @@
+(import s2j)
+(define-java-class <jjson-array> |org.json.JSONArray|)
+(define (length)
+  (define-generic-java-method length |length|)
+  (define json-array (java-new <jjson-array>))
+  (length json-array))
