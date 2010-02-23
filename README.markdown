@@ -43,3 +43,9 @@ However, as the tutorial mentions, it fails to perform simple recursions.
 This project will mainly be used a testing ground.  I may add, for instance, the ability
 to eval scripts from the sdcard, from, say, list of items.  However, it will not be
 involved into a full REPL.  I will create a new project for that.
+
+# License
+My source is released under the GNU General Public License Version 2 (GPL). The full text
+of this license can be found in a file called COPYING released with the source code. The java
+bean source code is GPL license by Sun, and hence so are my patches to it.  The SISC
+source code is dual license Mozilla/GPL, so my changes to that code fall under those.
